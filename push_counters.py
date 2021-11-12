@@ -5,16 +5,16 @@ import time
 import socket
 import sys
 
+# Parameters.
 push_gateway = 'http://localhost:9091'
 job_name = 'pushgateway'
 instance_name = socket.gethostname()
 iteration_interval = 1  # seconds
-
-# Computed constants.
-url = '{}/metrics/job/{}/instance/{}'.format(push_gateway, job_name, instance_name)
 response_file = './counters.json'
 rippled = 'rippled --conf rippled.cfg'
 
+# Computed constants.
+url = '{}/metrics/job/{}/instance/{}'.format(push_gateway, job_name, instance_name)
 cmd = '{} server_info counters > {}'.format(rippled, response_file)
 # Each of these paths leads to a dictionary from task type to object of
 # counters (e.g. `started`, `finished`, `duration_us`).
